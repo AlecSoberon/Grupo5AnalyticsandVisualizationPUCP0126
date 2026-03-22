@@ -238,6 +238,75 @@
       padding: 24px 0 36px;
     }
 
+      .carousel {
+        position: relative;
+        max-width: 920px;
+        margin: 12px auto 6px;
+        overflow: hidden;
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        background: #f5f9ff;
+        border: 1px solid #d8e0ec;
+      }
+      
+      .carousel-track-container {
+        overflow: hidden;
+        width: 100%;
+      }
+      
+      .carousel-track {
+        display: flex;
+        transition: transform 0.4s ease-in-out;
+      }
+      
+      .carousel-image {
+        min-width: 100%;
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        display: block;
+      }
+      
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(22, 58, 112, 0.72);
+        color: white;
+        border: none;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 999px;
+        z-index: 2;
+      }
+      
+      .carousel-btn.prev { left: 14px; }
+      .carousel-btn.next { right: 14px; }
+      
+      .carousel-btn:hover {
+        background: rgba(22, 58, 112, 0.9);
+      }
+      
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      
+      .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #c4d4ea;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .carousel-dot.active {
+        background: var(--accent);
+      }
     @media (max-width: 860px) {
       .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
       section { padding: 22px; }
@@ -261,6 +330,7 @@
       <div class="hero-image">
         <img src="Imagen_Inmobiliaria_Mayo.png" alt="Inmobiliaria Mayo" style="max-width: 100%; height: auto; border-radius: 12px;">
     </div>
+   </div>
   </header>
 
   <nav class="nav">
@@ -305,29 +375,65 @@
     </section>
 
     <section id="dashboards">
-      <h2>Dashboards y Visualizaciones</h2>
-      <p>
-        [En esta sección presenta tus reportes más importantes. Puedes poner screenshots de Power BI y debajo una explicación
-        breve de qué responde cada dashboard o visual.]
-      </p>
+  <h2>Dashboards y Visualizaciones</h2>
+  <p>
+    En esta sección se presentan las principales visualizaciones desarrolladas para analizar el comportamiento del ratio de conversión comercial del proyecto Villa Verde, 
+    así como los hallazgos más relevantes identificados a partir del dashboard en Power BI.
+  </p>
 
-      <h3>Dashboard principal</h3>
-      <div class="image-box">Inserta aquí la captura del dashboard principal</div>
-      <p class="caption">Figura: Dashboard principal del proyecto</p>
+  <h3>Dashboard principal</h3>
 
-      <h3>Visuales destacadas</h3>
-      <div class="grid-2">
-        <div>
-          <div class="image-box">Inserta aquí una visual destacada</div>
-          <p class="caption">Figura: KPI o visual 1</p>
-        </div>
-        <div>
-          <div class="image-box">Inserta aquí otra visual destacada</div>
-          <p class="caption">Figura: KPI o visual 2</p>
-        </div>
+  <div class="carousel">
+    <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+
+    <div class="carousel-track-container">
+      <div class="carousel-track" id="carouselTrack">
+        <img src="Imagen_Inicio.png" alt="Dashboard principal 1" class="carousel-image">
+        <img src="Imagen_Caso_Negocio.png" alt="Dashboard principal 2" class="carousel-image">
+        <img src="Imagen_Indicadores.png" alt="Dashboard principal 3" class="carousel-image">
+        <img src="Imagen_Dashboard.png" alt="Dashboard principal 4" class="carousel-image">
+        <img src="Imagen_Reporte.png" alt="Dashboard principal 5" class="carousel-image">
+        <img src="Imagen_Pregunta_1.png" alt="Dashboard principal 6" class="carousel-image">
+        <img src="Imagen_Pregunta_2.png" alt="Dashboard principal 7" class="carousel-image">
+        <img src="Imagen_Pregunta_3.png" alt="Dashboard principal 8" class="carousel-image">
+        <img src="Imagen_Pregunta_4.png" alt="Dashboard principal 9" class="carousel-image">
+        <img src="Imagen_Pregunta_5.png" alt="Dashboard principal 10" class="carousel-image">
+        <img src="Imagen_Pregunta_6.png" alt="Dashboard principal 11" class="carousel-image">
+        <img src="Imagen_Pregunta_7.png" alt="Dashboard principal 12" class="carousel-image">
+        <img src="Imagen_Pregunta_8.png" alt="Dashboard principal 13" class="carousel-image">
+        <img src="Imagen_Pregunta_9.png" alt="Dashboard principal 14" class="carousel-image">
+        <img src="Imagen_Pregunta_10.png" alt="Dashboard principal 15" class="carousel-image">
       </div>
-      <hr class="separator" />
-    </section>
+    </div>
+
+    <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+  </div>
+
+  <div class="carousel-dots">
+    <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+    <button class="carousel-dot" onclick="goToSlide(1)"></button>
+    <button class="carousel-dot" onclick="goToSlide(2)"></button>
+  </div>
+
+  <p class="caption">Figura: Principales dashboards del proyecto</p>
+
+  <h3>Visuales destacadas</h3>
+  <div class="grid-2">
+    <div>
+      <div class="image-box">
+        <img src="visual1.png" alt="Visual destacada 1" style="width:100%; height:100%; object-fit:cover; border-radius:16px;">
+      </div>
+      <p class="caption">Figura: KPI o visual 1</p>
+    </div>
+    <div>
+      <div class="image-box">
+        <img src="visual2.png" alt="Visual destacada 2" style="width:100%; height:100%; object-fit:cover; border-radius:16px;">
+      </div>
+      <p class="caption">Figura: KPI o visual 2</p>
+    </div>
+  </div>
+  <hr class="separator" />
+</section>
 
     <section id="equipo">
       <h2>Equipo del Proyecto</h2>
