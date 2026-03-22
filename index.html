@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BUSINESS ANALYTICS 2026-ENERO – FINAL – GRUPO XX</title>
+  <style>
+    :root {
+      --primary: #163a70;
+      --primary-2: #214f92;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --line: #d8e0ec;
+      --soft: #eef4fc;
+      --accent: #0f7ae5;
+      --shadow: 0 12px 28px rgba(22, 58, 112, 0.08);
+      --radius: 18px;
+      --maxw: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(92%, var(--maxw));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      padding: 22px 0;
+      text-align: center;
+    }
+
+    .topbar small {
+      opacity: 0.9;
+      letter-spacing: 0.04em;
+    }
+
+    .hero {
+      padding: 44px 0 20px;
+      background: white;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      text-align: center;
+      color: var(--primary);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      margin: 0 auto 22px;
+      max-width: 820px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .hero-image {
+      margin: 0 auto;
+      width: min(100%, 920px);
+      aspect-ratio: 16/7;
+      border: 2px dashed #bfd0e6;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #edf3fb, #f8fbff);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 700;
+      text-align: center;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(245, 247, 251, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav ul {
+      margin: 0;
+      padding: 14px 0;
+      list-style: none;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    main {
+      padding: 28px 0 60px;
+    }
+
+    section {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    hr.separator {
+      border: 0;
+      border-top: 2px solid #e7edf6;
+      margin: 18px 0 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--primary);
+      font-size: 1.7rem;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin: 18px 0 8px;
+      font-size: 1.12rem;
+    }
+
+    p, li {
+      color: var(--text);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .mini-card {
+      background: var(--soft);
+      border: 1px solid #d8e7fb;
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .mini-card h4 {
+      margin: 0 0 6px;
+      color: var(--primary);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border: 1px solid #e5ecf5;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0f5fc;
+      color: var(--primary);
+    }
+
+    .image-box {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 2px dashed #bfd0e6;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #f5f9ff, #edf3fb);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 18px;
+      color: var(--muted);
+      font-weight: 700;
+      margin: 12px 0 6px;
+    }
+
+    .caption {
+      margin: 4px 0 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e8f1ff;
+      color: var(--primary);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin: 6px 8px 0 0;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 24px 0 36px;
+    }
+
+    @media (max-width: 860px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      section { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <small>PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ · BUSINESS ANALYTICS 2026-ENERO</small>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>BUSINESS ANALYTICS 2026-ENERO – FINAL – GRUPO XX</h1>
+      <p>
+        Portafolio web del proyecto final. Este sitio resume la presentación general del proyecto,
+        los objetivos, los dashboards construidos, el equipo del grupo y el repositorio de entrega.
+      </p>
+      <div class="hero-image">Inserta aquí una imagen principal del proyecto, banner del equipo o captura destacada del dashboard</div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="container">
+      <ul>
+        <li><a href="#presentacion">Presentación</a></li>
+        <li><a href="#objetivos">Objetivos</a></li>
+        <li><a href="#dashboards">Dashboards</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#repo">Repositorio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="presentacion">
+      <h2>Presentación General</h2>
+      <p>
+        [Aquí escribe un resumen del proyecto: empresa o caso analizado, problema principal, necesidad de negocio
+        y por qué era importante resolverlo con herramientas de Business Analytics. Este bloque debe parecerse
+        a una introducción ejecutiva del trabajo final.]
+      </p>
+      <p>
+        [Añade también una breve explicación de qué construyó el grupo: dashboards, automatización, análisis de KPIs,
+        modelo de datos, recomendaciones, entre otros.]
+      </p>
+      <hr class="separator" />
+    </section>
+
+    <section id="objetivos">
+      <h2>Objetivos del Proyecto</h2>
+      <ul>
+        <li>[Objetivo 1]</li>
+        <li>[Objetivo 2]</li>
+        <li>[Objetivo 3]</li>
+        <li>[Objetivo 4]</li>
+        <li>[Objetivo 5]</li>
+      </ul>
+      <hr class="separator" />
+    </section>
+
+    <section id="dashboards">
+      <h2>Dashboards y Visualizaciones</h2>
+      <p>
+        [En esta sección presenta tus reportes más importantes. Puedes poner screenshots de Power BI y debajo una explicación
+        breve de qué responde cada dashboard o visual.]
+      </p>
+
+      <h3>Dashboard principal</h3>
+      <div class="image-box">Inserta aquí la captura del dashboard principal</div>
+      <p class="caption">Figura: Dashboard principal del proyecto</p>
+
+      <h3>Visuales destacadas</h3>
+      <div class="grid-2">
+        <div>
+          <div class="image-box">Inserta aquí una visual destacada</div>
+          <p class="caption">Figura: KPI o visual 1</p>
+        </div>
+        <div>
+          <div class="image-box">Inserta aquí otra visual destacada</div>
+          <p class="caption">Figura: KPI o visual 2</p>
+        </div>
+      </div>
+      <hr class="separator" />
+    </section>
+
+    <section id="equipo">
+      <h2>Equipo del Proyecto</h2>
+      <div class="grid-4">
+        <div class="mini-card"><h4>Integrante 1</h4><p>[Rol o aporte]</p></div>
+        <div class="mini-card"><h4>Integrante 2</h4><p>[Rol o aporte]</p></div>
+        <div class="mini-card"><h4>Integrante 3</h4><p>[Rol o aporte]</p></div>
+        <div class="mini-card"><h4>Integrante 4</h4><p>[Rol o aporte]</p></div>
+      </div>
+      <hr class="separator" />
+    </section>
+
+    <section id="repo">
+      <h2>Repositorio y Publicación</h2>
+      <p><strong>Repositorio en GitHub:</strong> <a href="#">Pega aquí tu enlace</a></p>
+      <p><strong>GitHub Pages:</strong> <a href="#">Pega aquí tu enlace publicado</a></p>
+      <p>
+        [Puedes añadir también una nota breve sobre cómo se organizó el entregable: base de datos, Power BI, documentación,
+        capturas y código adicional.]
+      </p>
+    </section>
+  </main>
+
+  <div class="footer">
+    PUCP · Business Analytics 2026-Enero · Portafolio web del proyecto final
+  </div>
+</body>
+</html>
