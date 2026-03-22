@@ -460,5 +460,37 @@
   <div class="footer">
     PUCP · Business Analytics 2026-Enero · Portafolio web del proyecto final
   </div>
+
+  <script>
+  let currentSlide = 0;
+
+  function updateCarousel() {
+    const track = document.getElementById("carouselTrack");
+    const dots = document.querySelectorAll(".carousel-dot");
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentSlide);
+    });
+  }
+
+  function moveSlide(direction) {
+    const slides = document.querySelectorAll(".carousel-image");
+    const totalSlides = slides.length;
+
+    currentSlide += direction;
+
+    if (currentSlide < 0) currentSlide = totalSlides - 1;
+    if (currentSlide >= totalSlides) currentSlide = 0;
+
+    updateCarousel();
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+  }
+</script>
+
 </body>
 </html>
